@@ -1,14 +1,8 @@
 import { useState } from 'react'
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native'
-import type { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { NativeStackProps } from '../types'
 
-type RootStackParamsList = {
-  Login: undefined,
-  AuthWeatherApp: {name: string},
-}
-type Props = NativeStackScreenProps<RootStackParamsList, 'Login'>
-
-function Login( { route, navigation }: Props ) {
+function Login( { route, navigation }: NativeStackProps ) {
   const [name, onChangeName ] = useState('')
   return (
     <View style={styles.container}>
@@ -19,7 +13,7 @@ function Login( { route, navigation }: Props ) {
           value={name}
           placeholder='last name, first name'
         />
-        <Button title="Sign In" onPress={() => navigation.navigate("AuthWeatherApp", 
+        <Button title="Sign In" onPress={() => navigation.navigate("CurWeatherNavigator", 
           {name: name}
         )} />
     </View>

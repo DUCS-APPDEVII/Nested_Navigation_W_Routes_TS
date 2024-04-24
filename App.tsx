@@ -24,28 +24,12 @@
  */
 import { StyleSheet } from 'react-native';
 
-import { CompositeScreenProps, NavigationContainer } from "@react-navigation/native"
-import type { NativeStackNavigationOptions, NativeStackScreenProps } from '@react-navigation/native-stack';
+import { NavigationContainer } from "@react-navigation/native"
+import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Login from "./screens/Login"
-import AuthWeatherApp  from './AuthWeatherApp';
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-
-type RootStackParamsList = {
-  Login: undefined,
-  AuthWeatherApp: {name: string},
-}
-
-type BottomTabNavParamsList  = {
-  CurrentWeather: { name : string },
-  Location: undefined,
-  Journal: undefined
-}
-
-type AuthWeatherScreenProps = CompositeScreenProps<
-   BottomTabScreenProps<BottomTabNavParamsList,'CurrentWeather'>,
-   NativeStackScreenProps<RootStackParamsList>
-   >
+import { RootStackParamsList } from './types';
+import CurWeatherNavigator  from './navigators/CurWeatherNavigator';
 
 const Stack = createNativeStackNavigator<RootStackParamsList>()
 
@@ -62,8 +46,8 @@ export default function App() {
         <Stack.Navigator screenOptions={scrnOptions}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen 
-            name="AuthWeatherApp"
-            component={AuthWeatherApp}
+            name="CurWeatherNavigator"
+            component={CurWeatherNavigator}
             options={{
               headerShown: false,
             }}

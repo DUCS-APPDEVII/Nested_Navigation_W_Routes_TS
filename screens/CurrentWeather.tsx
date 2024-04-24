@@ -5,29 +5,15 @@ File: CurrentWeather.tsx          Date: 1/25/2024
    Modification Log
    1/28/2024 Changed the name of the screen from HomeScreen to
    CurrentWeather.  S. Sigman
+   4/24/2024 Refactored to use types from types.ts and deleting
+             unnecessary imports. S. Sigman
 */
-import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
-import { CompositeScreenProps } from '@react-navigation/native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-type BottomTabNavParamsList  = {
-  CurrentWeather: { name : string },
-  Location: undefined
-}
+import React from 'react' 
+import { View, Text, StyleSheet, Button } from 'react-native' 
+import { CurWeatherAppScreenProps } from '../types' 
 
-type RootStackParamsList = {
-  Login: undefined,
-  AuthWeatherApp: {name: string},
-}
-
-type CurrentWeatherScreenProps = CompositeScreenProps<
-   BottomTabScreenProps<BottomTabNavParamsList,'CurrentWeather'>,
-   NativeStackScreenProps<RootStackParamsList>
-   >
-
-function CurrentWeather({ route, navigation }: CurrentWeatherScreenProps) {
+function CurrentWeather({ route, navigation }: CurWeatherAppScreenProps) {
   const { name } = route.params
   return (
     <View style={styles.container}>
@@ -44,6 +30,6 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
-  });
+  }) 
 
 export default CurrentWeather

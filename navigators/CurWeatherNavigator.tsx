@@ -7,42 +7,29 @@ File: AuthWeatherApp.tsx          Date: 1/25/2024
    1/28/2024 Adapted the 2023 starter code to use Typescipt.  S. Sigman
    1/29/2024 Renamed App.tsx and modified for use with nested Navigators. S. Sigman
    4/22/2024 Adapted to illustrate using Route props and correct typing
-   S. Sigman
+             S. Sigman
+   4/24/2024 Cleaned up code by refractoring to use types from types.ts and
+             deleting unnecessary imports. S. Sigman       
 */
-//import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { CompositeScreenProps, RouteProp, useRoute } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import type { BottomTabScreenProps, BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
-import Ionicons from '@expo/vector-icons/Ionicons';
 
-import CurrentWeather from './screens/CurrentWeather';
-import Location from './screens/Location';
-import Journal from './screens/Journal'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs' 
+import { useRoute } from '@react-navigation/native'
+
+import Ionicons from '@expo/vector-icons/Ionicons'
+
+import CurrentWeather from '../screens/CurrentWeather'
+import Location from '../screens/Location'
+import Journal from '../screens/Journal'
 
 // Navigation Types and Prop Types
-type RootStackParamsList = {
-  Login: undefined,
-  AuthWeatherApp: {name: string},
-}
-
-type BottomTabNavParamsList  = {
-  CurrentWeather: { name : string },
-  Location: undefined,
-  Journal: undefined
-}
-
-// type AuthWeatherScreenProps = CompositeScreenProps<
-//    BottomTabScreenProps<BottomTabNavParamsList,'CurrentWeather'>,
-//    NativeStackScreenProps<RootStackParamsList>
-//    >
-
-type AuthWeatherRouteProp = RouteProp<BottomTabNavParamsList>
+import { RootStackParamsList,
+  BottomTabNavParamsList,
+  CurWeatherAppNavigatorRouteProp } from '../types'
 
 const Tab = createBottomTabNavigator<BottomTabNavParamsList>()
 
-function AuthWeatherApp() {
-    const route = useRoute<AuthWeatherRouteProp>()
+function CurWeatherNavigator() {
+    const route = useRoute<CurWeatherAppNavigatorRouteProp>()
     let theUser: string = ''
     if (route.params !== undefined)
       theUser = route.params.name
@@ -54,11 +41,11 @@ function AuthWeatherApp() {
                 if (route.name ==='CurrentWeather') {
                   iconName = focused 
                     ? 'home'
-                    : 'home-outline';
+                    : 'home-outline' 
                 } else if (route.name==='Location') {
-                  iconName = focused ? 'list' : 'list-outline';
+                  iconName = focused ? 'list' : 'list-outline' 
                 } else if (route.name==='Journal') {
-                  iconName = focused ? 'documents' : 'documents-outline';
+                  iconName = focused ? 'documents' : 'documents-outline' 
                 }
 
                 return <Ionicons name={iconName} size={size} color={color} />
@@ -110,14 +97,7 @@ function AuthWeatherApp() {
               }} 
             />
           </Tab.Navigator>
-    );
-};
+    ) 
+} 
 
-// export default function App() {
-//     return (
-//         <NavigationContainer>
-//             <AuthWeatherApp />
-//         </NavigationContainer>
-//     )
-// };
-export default AuthWeatherApp
+export default CurWeatherNavigator
