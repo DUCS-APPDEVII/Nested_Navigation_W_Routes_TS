@@ -15,7 +15,7 @@ export type RootStackParamsList = {
 export type BottomTabNavParamsList  = {
     CurrentWeather: { name : string },
     Location: undefined,
-    Journal: undefined
+    JournalStackNavigator: undefined
   }
   
 export type CurWeatherAppScreenProps = CompositeScreenProps<
@@ -26,3 +26,8 @@ export type CurWeatherAppScreenProps = CompositeScreenProps<
 export type NativeStackProps = NativeStackScreenProps<RootStackParamsList, 'Login'>
 
 export type CurWeatherAppNavigatorRouteProp = RouteProp<BottomTabNavParamsList>
+
+export type JournalStackPramList = {
+      Journal: undefined,
+      JournalEntry: {jid: number}
+}

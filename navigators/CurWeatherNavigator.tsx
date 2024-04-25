@@ -25,6 +25,7 @@ import Journal from '../screens/Journal'
 import { RootStackParamsList,
   BottomTabNavParamsList,
   CurWeatherAppNavigatorRouteProp } from '../types'
+import JournalStackNavigator from './JournalStackNavigator'
 
 const Tab = createBottomTabNavigator<BottomTabNavParamsList>()
 
@@ -44,7 +45,7 @@ function CurWeatherNavigator() {
                     : 'home-outline' 
                 } else if (route.name==='Location') {
                   iconName = focused ? 'list' : 'list-outline' 
-                } else if (route.name==='Journal') {
+                } else if (route.name==='JournalStackNavigator') {
                   iconName = focused ? 'documents' : 'documents-outline' 
                 }
 
@@ -84,8 +85,8 @@ function CurWeatherNavigator() {
               }} 
             />
             <Tab.Screen 
-              name ='Journal'
-              component={Journal}
+              name = 'JournalStackNavigator'
+              component={JournalStackNavigator}
               options={ {
                 title: 'Journal Entries',
                 headerStyle: {
