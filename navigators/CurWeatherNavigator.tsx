@@ -19,7 +19,6 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 
 import CurrentWeather from '../screens/CurrentWeather'
 import Location from '../screens/Location'
-import Journal from '../screens/Journal'
 
 // Navigation Types and Prop Types
 import { RootStackParamsList,
