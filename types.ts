@@ -2,9 +2,9 @@
  Types used in the application
  */
 
-import { CompositeScreenProps, RouteProp } from "@react-navigation/native"
+import { CompositeScreenProps, NavigationProp, RouteProp } from "@react-navigation/native"
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
-import type { NativeStackScreenProps } from '@react-navigation/native-stack' 
+import type { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack' 
 
 // Navigation & Route types
 export type RootStackParamsList = {
@@ -30,4 +30,19 @@ export type CurWeatherAppNavigatorRouteProp = RouteProp<BottomTabNavParamsList>
 export type JournalStackPramList = {
       Journal: undefined,
       JournalEntry: {jid: number}
+}
+
+export type JournalScreenProp = RouteProp<JournalStackPramList,'JournalEntry'>
+
+export type JournalButtonProps = {
+    jid: number, 
+    title: string, 
+    navigation: NativeStackNavigationProp<JournalStackPramList,'Journal',undefined>  //JournalScreenProp
+}
+
+export type JournalStackProps = NativeStackScreenProps<JournalStackPramList, 'Journal'>
+
+export type JournalType = {
+  jid: number,
+  title: string,
 }

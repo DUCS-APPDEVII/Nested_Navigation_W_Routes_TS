@@ -1,21 +1,6 @@
 import React from 'react'
 import { Text, StyleSheet, Pressable } from 'react-native'
-import { NavigationProp } from '@react-navigation/native'
-import { JournalStackPramList } from "../types"
-
-type JournalScreenProp = NavigationProp<JournalStackPramList,'JournalEntry'>
-
-type journal = {
-  jid: number,
-  title: string
-}
-type journalListType = [journal]
-
-type JournalButtonProps = {
-    jid: number, 
-    title: string, 
-    navigation: JournalScreenProp
-}
+import { JournalButtonProps } from "../types"
 
 export default function JournalButton(props:JournalButtonProps) {
     const { jid, title, navigation} = props
@@ -23,8 +8,8 @@ export default function JournalButton(props:JournalButtonProps) {
         navigation.navigate('JournalEntry', {jid: jid})
     }
     return (
-        <Pressable style={styles.button} onPress={onPress}>
-           <Text style={styles.text}>{`title`}</Text>
+        <Pressable style={styles.button} onPress={onPress} >
+           <Text style={styles.text}>{title}</Text>
         </Pressable>
     )
 }
@@ -32,8 +17,14 @@ export default function JournalButton(props:JournalButtonProps) {
 const styles = StyleSheet.create({
     button: {
       backgroundColor: '#6200EE',
+      width: '90%',
+      marginTop: 2,
+      marginBottom: 2,
+      padding: 10
     },
     text: {
         color: '#03DAC6',
+        fontSize: 24,
+        textAlign: 'center'
     }
 })

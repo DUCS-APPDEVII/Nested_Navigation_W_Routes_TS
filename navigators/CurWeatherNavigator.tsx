@@ -88,6 +88,7 @@ function CurWeatherNavigator() {
               component={JournalStackNavigator}
               options={ {
                 title: 'Journal Entries',
+                headerShown: false,
                 headerStyle: {
                   backgroundColor: '#6200EE',
                 },

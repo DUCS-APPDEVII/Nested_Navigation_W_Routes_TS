@@ -1,17 +1,8 @@
 import { View, Text, StyleSheet } from "react-native"
-import { NavigationProp } from '@react-navigation/native'
-import { JournalStackPramList } from "../types"
-import JournalButton from "../components/journalButton"
+import { JournalScreenProp } from "../types"
 
-type JournalScreenProp = NavigationProp<JournalStackPramList,'JournalEntry'>
-
-type journal = {
-  jid: number,
-  title: string
-}
-
-const JournalEntry = ({navigation}:{navigation: JournalScreenProp}) => {
-  
+const JournalEntry = ({route}:{route: JournalScreenProp}) => {
+  const { jid } = route.params
   return (
     <View style={styles.container}>
         <Text style={styles.textStyle}>Journal Entry</Text>

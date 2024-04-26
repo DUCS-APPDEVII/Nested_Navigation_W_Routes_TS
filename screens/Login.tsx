@@ -4,6 +4,7 @@ import { NativeStackProps } from '../types'
 
 function Login( { route, navigation }: NativeStackProps ) {
   const [name, onChangeName ] = useState('')
+
   return (
     <View style={styles.container}>
         <Text style={styles.textStyle}>Login Screen</Text>
