@@ -20,9 +20,9 @@ function JournalStackNavigator() {
         <JournalStack.Screen
           name='JournalEntry'
           component={JournalEntry}
-          options={{
-            headerShown: false,
-          }}
+          // options={{
+          //   headerShown: false,
+          // }}
         />
     </JournalStack.Navigator>
 )}
